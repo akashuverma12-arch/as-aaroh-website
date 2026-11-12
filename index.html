@@ -1,89 +1,200 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AS AAROH — Everyday Essentials. Elevated. Discover thoughtfully selected everyday products.">
-  <meta name="theme-color" content="#151515">
-  <title>AS AAROH | Everyday Essentials. Elevated.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AS AAROH | Premium General Store</title>
+<style>
+:root{--gold:#d6ad60;--black:#111;--cream:#f8f5ee}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:#222}
+header{background:#111;color:white;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.brand{font-size:27px;font-weight:900;letter-spacing:3px;color:var(--gold)}
+.tagline{font-size:12px;color:#ddd;margin-top:5px}
+.cart-button{background:var(--gold);color:#111;border:0;border-radius:25px;padding:12px 18px;font-weight:bold;cursor:pointer}
+.hero{background:linear-gradient(120deg,#171717,#40301b);color:white;padding:55px 7%;text-align:center}
+.hero h1{font-size:clamp(30px,6vw,52px);margin:0 0 12px;color:var(--gold)}
+.hero p{color:#eee;line-height:1.6}
+.hero a{display:inline-block;margin-top:12px;background:var(--gold);color:#111;padding:13px 22px;border-radius:25px;text-decoration:none;font-weight:bold}
+.section{padding:28px 5%}
+.section h2{font-size:25px;margin:0 0 18px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{border:1px solid #c8b58e;background:white;padding:9px 14px;border-radius:20px;cursor:pointer}
+.filters button.active{background:#171717;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px}
+.product{background:white;border-radius:14px;overflow:hidden;box-shadow:0 3px 14px #00000012;padding-bottom:14px}
+.product .picture{height:125px;background:#f1eadc;display:grid;place-items:center;font-size:55px}
+.product h3{font-size:15px;margin:12px 12px 5px}
+.product .category{font-size:11px;color:#777;margin:0 12px}
+.product .price{font-weight:bold;color:#8c641f;margin:10px 12px}
+.product button{margin:0 12px;width:calc(100% - 24px);border:0;border-radius:20px;padding:10px;background:#171717;color:white;cursor:pointer}
+.product button:hover{background:#9b742f}
+.note{font-size:12px;color:#777;margin-top:15px}
+.cart-panel{display:none;background:white;padding:20px;border-radius:15px;margin:0 5% 25px;box-shadow:0 3px 15px #00000015}
+.cart-panel.show{display:block}
+.cart-row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:10px 0;font-size:14px}
+.cart-row button{border:0;background:#eee;border-radius:6px;padding:5px 9px}
+.checkout{width:100%;padding:14px;background:#168b48;color:white;border:0;border-radius:25px;font-size:16px;font-weight:bold;margin-top:15px;cursor:pointer}
+footer{background:#111;color:#ddd;text-align:center;padding:30px 15px;margin-top:35px}
+footer strong{color:var(--gold)}
+.empty{text-align:center;color:#777;padding:20px}
+</style>
 </head>
 <body>
-  <div class="announcement">A MORE THOUGHTFUL WAY TO SHOP <span>✦</span> AS AAROH</div>
-  <header class="header">
-    <a class="brand" href="#" aria-label="AS AAROH home"><span class="brand-mark">A</span><span>AS <b>AAROH</b><small>EVERYDAY ESSENTIALS. ELEVATED.</small></span></a>
-    <nav class="nav" id="nav">
-      <a href="#home">Home</a><a href="#shop">Shop</a><a href="#story">Our story</a><a href="#contact">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <button class="icon-btn" id="searchToggle" aria-label="Search">⌕</button>
-      <button class="cart-btn" id="cartOpen">Bag <span id="cartCount">0</span></button>
-      <button class="menu-btn" id="menuToggle" aria-label="Open menu">☰</button>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow">THE ART OF EVERYDAY LIVING</p>
-        <h1>Rise above<br><em>ordinary.</em></h1>
-        <p class="hero-text">Thoughtfully chosen essentials for the way you live, work and unwind. Discover a little more beauty in every day.</p>
-        <a class="button button-gold" href="#shop">Explore the collection <span>↗</span></a>
-        <div class="hero-note"><span class="note-line"></span> QUALITY · VALUE · TRUST</div>
-      </div>
-      <div class="hero-art" aria-label="Decorative luxury product arrangement">
-        <div class="art-circle"></div><div class="art-card art-card-one"><span>AA</span><small>THE EVERYDAY EDIT</small></div>
-        <div class="art-card art-card-two"><span>01</span><small>CURATED FOR YOU</small></div>
-        <div class="art-caption">A NEW PERSPECTIVE<br>ON EVERYDAY FINDS</div>
-      </div>
-    </section>
+<header>
+  <div>
+    <div class="brand">AS AAROH</div>
+    <div class="tagline">EVERYDAY ESSENTIALS. ELEVATED.</div>
+  </div>
+  <button class="cart-button" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+</header>
 
-    <section class="benefits">
-      <div><span>✧</span><b>Thoughtful selection</b><small>Chosen with care</small></div>
-      <div><span>◇</span><b>Honest value</b><small>Quality that makes sense</small></div>
-      <div><span>♡</span><b>Customer first</b><small>Here to help you</small></div>
-    </section>
+<section class="hero">
+  <h1>Welcome to AS AAROH</h1>
+  <p>Your trusted destination for everyday essentials.<br>Quality • Value • Convenience</p>
+  <a href="#shop">EXPLORE PRODUCTS</a>
+</section>
 
-    <section class="shop-section section" id="shop">
-      <div class="section-heading"><div><p class="eyebrow">DISCOVER YOUR NEXT FAVOURITE</p><h2>The collection</h2></div><p>Everyday finds, selected<br>with a little extra thought.</p></div>
-      <div class="toolbar">
-        <div class="filters" id="filters">
-          <button class="filter active" data-category="All">All products</button>
-          <button class="filter" data-category="Home & Kitchen">Home &amp; Kitchen</button>
-          <button class="filter" data-category="Grocery & Snacks">Grocery &amp; Snacks</button>
-          <button class="filter" data-category="Personal Care">Personal care</button>
-          <button class="filter" data-category="Household Items">Household</button>
-        </div>
-        <input id="searchInput" class="search-input" type="search" placeholder="Search products..." aria-label="Search products">
-      </div>
-      <div class="product-grid" id="productGrid"></div>
-      <p class="demo-note">20 demo products are shown for preview. Replace names, photos and prices with your actual shop inventory before accepting orders.</p>
-    </section>
+<section class="section" id="shop">
+  <h2>Our Products</h2>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="products"></div>
+  <p class="note">* All products and prices shown are demo listings. Confirm actual availability and price before ordering.</p>
+</section>
 
-    <section class="manifesto" id="story">
-      <p class="eyebrow">THE AS AAROH PHILOSOPHY</p><h2>Luxury isn't always<br>about more. It's about<br><em>meaningful choices.</em></h2>
-      <p>We believe everyday shopping should feel considered, dependable and inspiring. AS AAROH brings a modern Indian point of view to the things you choose every day.</p>
-      <span class="manifesto-sign">AS AAROH</span>
-    </section>
+<section class="cart-panel" id="cartPanel">
+  <h2>Your Shopping Cart</h2>
+  <div id="cartItems"></div>
+  <h3 id="total">Total: ₹0</h3>
+  <button class="checkout" onclick="checkout()">Order on WhatsApp</button>
+</section>
 
-    <section class="contact section" id="contact">
-      <div><p class="eyebrow">WE'D LOVE TO HEAR FROM YOU</p><h2>Let's make it<br><em>personal.</em></h2></div>
-      <div class="contact-card"><p>Questions about a product or an order? Get in touch and we'll be happy to help.</p><a class="button button-dark" id="contactWhatsApp" href="https://wa.me/" target="_blank" rel="noopener">Chat on WhatsApp ↗</a><small>Demo catalogue and prices. Confirm stock and delivery on WhatsApp.</small></div>
-    </section>
-  </main>
+<footer>
+  <strong>AS AAROH</strong>
+  <p>Everyday Essentials. Elevated.</p>
+  <p>Thank you for shopping with us ❤️</p>
+  <p>© 2026 AS AAROH. All rights reserved.</p>
+</footer>
 
-  <footer class="footer"><a class="brand brand-footer" href="#"><span class="brand-mark">A</span><span>AS <b>AAROH</b><small>EVERYDAY ESSENTIALS. ELEVATED.</small></span></a><p>Rise Above Ordinary.</p><small>© <span id="year"></span> AS AAROH. All rights reserved.</small></footer>
+<script>
+const whatsappNumber = "916387874831";
 
-  <div class="overlay" id="overlay"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
-    <div class="drawer-head"><h3>Your bag <span id="drawerCount">(0)</span></h3><button id="cartClose" class="close-btn" aria-label="Close cart">×</button></div>
-    <div id="cartItems" class="cart-items"><p class="empty-cart">Your bag is waiting for something lovely.</p></div>
-    <div class="drawer-bottom"><div class="subtotal"><span>Subtotal</span><b id="subtotal">₹0</b></div><p>Delivery charges, if any, can be confirmed on WhatsApp.</p><button id="checkout" class="button button-gold full">Order on WhatsApp ↗</button></div>
-  </aside>
-  <div class="toast" id="toast" role="status"></div>
-  <script src="script.js"></script>
+const products = [
+ {id:1,name:"Premium Rice",price:80,cat:"Grocery",emoji:"🍚"},
+ {id:2,name:"Wheat Flour",price:45,cat:"Grocery",emoji:"🌾"},
+ {id:3,name:"Sugar",price:45,cat:"Grocery",emoji:"🧂"},
+ {id:4,name:"Cooking Oil",price:150,cat:"Grocery",emoji:"🫗"},
+ {id:5,name:"Toor Dal",price:120,cat:"Grocery",emoji:"🫘"},
+ {id:6,name:"Tea Powder",price:110,cat:"Grocery",emoji:"🍵"},
+ {id:7,name:"Salt",price:25,cat:"Grocery",emoji:"🧂"},
+ {id:8,name:"Spice Mix",price:55,cat:"Grocery",emoji:"🌶️"},
+ {id:9,name:"Biscuits",price:30,cat:"Snacks",emoji:"🍪"},
+ {id:10,name:"Potato Chips",price:20,cat:"Snacks",emoji:"🍟"},
+ {id:11,name:"Namkeen",price:40,cat:"Snacks",emoji:"🥨"},
+ {id:12,name:"Chocolate",price:50,cat:"Snacks",emoji:"🍫"},
+ {id:13,name:"Instant Noodles",price:15,cat:"Snacks",emoji:"🍜"},
+ {id:14,name:"Cookies Pack",price:60,cat:"Snacks",emoji:"🍪"},
+ {id:15,name:"Fruit Juice",price:40,cat:"Drinks",emoji:"🧃"},
+ {id:16,name:"Soft Drink",price:45,cat:"Drinks",emoji:"🥤"},
+ {id:17,name:"Mineral Water",price:20,cat:"Drinks",emoji:"💧"},
+ {id:18,name:"Energy Drink",price:60,cat:"Drinks",emoji:"⚡"},
+ {id:19,name:"Shampoo",price:120,cat:"Personal Care",emoji:"🧴"},
+ {id:20,name:"Bath Soap",price:35,cat:"Personal Care",emoji:"🧼"},
+ {id:21,name:"Toothpaste",price:55,cat:"Personal Care",emoji:"🪥"},
+ {id:22,name:"Hair Oil",price:90,cat:"Personal Care",emoji:"💆"},
+ {id:23,name:"Face Wash",price:110,cat:"Personal Care",emoji:"🫧"},
+ {id:24,name:"Hand Wash",price:75,cat:"Personal Care",emoji:"🧴"},
+ {id:25,name:"Dishwash Liquid",price:65,cat:"Home",emoji:"🧽"},
+ {id:26,name:"Laundry Detergent",price:100,cat:"Home",emoji:"🫧"},
+ {id:27,name:"Floor Cleaner",price:95,cat:"Home",emoji:"🧹"},
+ {id:28,name:"Kitchen Towels",price:50,cat:"Home",emoji:"🧻"},
+ {id:29,name:"Storage Container",price:80,cat:"Home",emoji:"🥡"},
+ {id:30,name:"LED Bulb",price:90,cat:"Home",emoji:"💡"}
+];
+
+let cart = [];
+let selectedCategory = "All";
+
+function renderFilters(){
+ const categories = ["All",...new Set(products.map(p=>p.cat))];
+ document.getElementById("filters").innerHTML = categories.map(c =>
+ `<button class="${selectedCategory===c?'active':''}" onclick="selectCategory('${c}')">${c}</button>`
+ ).join("");
+}
+
+function selectCategory(category){
+ selectedCategory=category;
+ renderFilters();
+ renderProducts();
+}
+
+function renderProducts(){
+ const shown=products.filter(p=>selectedCategory==="All"||p.cat===selectedCategory);
+ document.getElementById("products").innerHTML=shown.map(p=>`
+ <article class="product">
+  <div class="picture">${p.emoji}</div>
+  <h3>${p.name}</h3>
+  <p class="category">${p.cat}</p>
+  <p class="price">₹${p.price} <small>/ demo price</small></p>
+  <button onclick="addToCart(${p.id})">Add to Cart +</button>
+ </article>
+ `).join("");
+}
+
+function addToCart(id){
+ const item=cart.find(x=>x.id===id);
+ if(item)item.qty++;
+ else cart.push({...products.find(p=>p.id===id),qty:1});
+ updateCart();
+}
+
+function changeQty(id,change){
+ const item=cart.find(x=>x.id===id);
+ if(!item)return;
+ item.qty+=change;
+ if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+ updateCart();
+}
+
+function updateCart(){
+ document.getElementById("cartCount").textContent=cart.reduce((s,p)=>s+p.qty,0);
+ const total=cart.reduce((s,p)=>s+p.price*p.qty,0);
+ document.getElementById("total").textContent="Total: ₹"+total;
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map(p=>`
+ <div class="cart-row">
+  <span>${p.emoji} ${p.name} × ${p.qty}</span>
+  <span>₹${p.price*p.qty}
+   <button onclick="changeQty(${p.id},-1)">−</button>
+   <button onclick="changeQty(${p.id},1)">+</button>
+  </span>
+ </div>
+ `).join(""):'<p class="empty">Your cart is empty. Add some products!</p>';
+}
+
+function toggleCart(){
+ document.getElementById("cartPanel").classList.toggle("show");
+ document.getElementById("cartPanel").scrollIntoView({behavior:"smooth"});
+}
+
+function checkout(){
+ if(!cart.length){
+  alert("Please add products to your cart first.");
+  return;
+ }
+ const lines=cart.map(p=>`${p.name} x ${p.qty} = Rs. ${p.price*p.qty}`);
+ const total=cart.reduce((s,p)=>s+p.price*p.qty,0);
+ const message="Hello AS AAROH! I want to place an order:\n\n"+
+ lines.join("\n")+"\n\nDemo total: Rs. "+total+
+ "\nPlease confirm actual availability and final prices.";
+ const url="https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message);
+ window.open(url,"_blank");
+}
+
+renderFilters();
+renderProducts();
+updateCart();
+</script>
 </body>
 </html>
